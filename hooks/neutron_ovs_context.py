@@ -149,6 +149,14 @@ class OVSPluginContext(context.NeutronContext):
 
         ovs_ctxt['firewall_driver'] = _get_firewall_driver()
 
+        ovs_ctxt['virt_type'] = virt_type = config('virt-type')
+        if virt_type == 'xenapi':
+            # Need information on how to access Dom0 for xenapi,
+            # as the ovs need access Dom0.
+            ovs_ctxt['host_ip'] = config('host-ip')
+            ovs_ctxt['host_username'] = config('host-username')
+            ovs_ctxt['host_password'] = config('host-password')
+
         return ovs_ctxt
 
 

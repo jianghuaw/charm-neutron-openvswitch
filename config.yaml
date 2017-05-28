@@ -1,4 +1,24 @@
 options:
+  virt-type:
+    type: string
+    default: ''
+    description: |
+      Virtualization driver.
+  host-ip:
+    type: string
+    default: 'none'
+    description: |
+      the host IP.
+  host-username:
+    type: string
+    default: 'none'
+    description: |
+      the username for accessing host.
+  host-password:
+    type: string
+    default: 'none'
+    description: |
+      the password for accessing host.
   debug:
     default: False
     type: boolean

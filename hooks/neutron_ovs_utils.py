@@ -133,6 +133,7 @@ NEUTRON_CONF = '%s/neutron.conf' % NEUTRON_CONF_DIR
 NEUTRON_DEFAULT = '/etc/default/neutron-server'
 NEUTRON_L3_AGENT_CONF = "/etc/neutron/l3_agent.ini"
 NEUTRON_FWAAS_CONF = "/etc/neutron/fwaas_driver.ini"
+NEUTRON_ROOTWRAP_CONF = "/etc/neutron/rootwrap.conf"
 ML2_CONF = '%s/plugins/ml2/ml2_conf.ini' % NEUTRON_CONF_DIR
 OVS_CONF = '%s/plugins/ml2/openvswitch_agent.ini' % NEUTRON_CONF_DIR
 EXT_PORT_CONF = '/etc/init/ext-port.conf'
@@ -162,6 +163,10 @@ BASE_RESOURCE_MAP = OrderedDict([
         'contexts': [neutron_ovs_context.OVSPluginContext()],
     }),
     (OVS_CONF, {
+        'services': ['neutron-openvswitch-agent'],
+        'contexts': [neutron_ovs_context.OVSPluginContext()],
+    }),
+    (NEUTRON_ROOTWRAP_CONF, {
         'services': ['neutron-openvswitch-agent'],
         'contexts': [neutron_ovs_context.OVSPluginContext()],
     }),
